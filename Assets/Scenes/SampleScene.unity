@@ -851,7 +851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697461749
 Transform:
   m_ObjectHideFlags: 0
@@ -1603,9 +1603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b94edf87b091ca4aa2dd01ad92bcd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClosestPointTest
-  rb: {fileID: 1283295580}
-  detectorObject: {fileID: 1282825104}
-  textvalue: {fileID: 525847098}
+  rb: {fileID: 0}
+  detectorObject: {fileID: 0}
+  textvalue: {fileID: 0}
 --- !u!60 &1283295579
 PolygonCollider2D:
   m_ObjectHideFlags: 0
