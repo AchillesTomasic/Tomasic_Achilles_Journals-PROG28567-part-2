@@ -23,5 +23,5 @@ public class PlayerVisuals : MonoBehaviour
                 bodyRenderer.flipX = false;
                 break;
         }
-    } // 
+    }
 }
