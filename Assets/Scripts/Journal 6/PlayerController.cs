@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody2D rb; // rigidbody for the player
     public enum FacingDirection
     {
         left, right
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>(); // used to set the rigidbody2d to the value set on this instance
     }
 
     void Update()
