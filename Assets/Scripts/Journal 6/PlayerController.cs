@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     private float deacclerationX; //rate of acceleration for the player
     public float timeToReachDeAccSpeedX; // time to reach the max speed for the player
     public float lastDirection; // gets the previous direction for the player
+
+    // collision boxcast 2d //
+    public Collider2D playerCollider; // obtains the players box collider value
+    public float BoxcastDistance; // distance the boxcast travels
+    public LayerMask groundMask; // used to only check the ground layers
+
     public enum FacingDirection
     {
         left, right
@@ -24,6 +30,7 @@ public class PlayerController : MonoBehaviour
         acclerationX = maxSpeedX/ timeToReachMaxSpeedX; // calculatuion to get the acceleration
         deacclerationX = maxSpeedX / timeToReachDeAccSpeedX; // calculation to get deacceleration
         rb2D = GetComponent<Rigidbody2D>(); // used to set the rigidbody2d to the value set on this instance
+        playerCollider = rb2D.GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
@@ -80,7 +87,7 @@ public class PlayerController : MonoBehaviour
     public bool IsWalking()
     {
         // is the velocity of the player above 
-        if(rb2D.linearVelocityX > 0)
+        if(Mathf.Abs(rb2D.linearVelocityX) > 0)
         {
             return true; // sets movement to true
         }
@@ -88,8 +95,21 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-
-        return false;
+        // boxcast for the player to detect if they are touching the ground
+        RaycastHit2D collisionCheck= Physics2D.BoxCast(
+            playerCollider.bounds.center, 
+            new Vector2(playerCollider.bounds.size.x,BoxcastDistance), 
+            0f, // always points downward
+            Vector2.down, 
+            playerCollider.bounds.extents.y + BoxcastDistance,
+            groundMask);
+        // checks if there is ground in the boxcast check
+        if (collisionCheck)
+        {
+            return true; // player is on ground
+        }
+        
+        return false;// if the player is vertically moving
     }
 
     public FacingDirection GetFacingDirection()
