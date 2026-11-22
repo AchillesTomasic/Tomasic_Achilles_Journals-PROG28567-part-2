@@ -79,15 +79,25 @@ public class PlayerController : MonoBehaviour
 
     public bool IsWalking()
     {
-        return false;
+        // is the velocity of the player above 
+        if(rb2D.linearVelocityX > 0)
+        {
+            return true; // sets movement to true
+        }
+        return false; // sets the movement to false
     }
     public bool IsGrounded()
     {
+
         return false;
     }
 
     public FacingDirection GetFacingDirection()
     {
+        if(lastDirection == 1)
+        {
+            return FacingDirection.right;
+        }
         return FacingDirection.left;
     }
 }
