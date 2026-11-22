@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviour
     {
         
         // raises the acceleration if the players controller moves
-        if (Mathf.Abs(playerInput.x) != 0)
+        if (Mathf.Abs(playerInput.x) > 0)
         {
             lastDirection = playerInput.x; // sets the direction that the player is traveling equal to the current input
             velocityX += acclerationX * Time.fixedDeltaTime; // determines the velocituy of the player over fixed deltatime
         }
         // slows player velocity if player is not moving or the controller is below an epsilon value
-        if (Mathf.Abs(playerInput.x) < Mathf.Epsilon)
+        if (Mathf.Abs(playerInput.x) <= 0)
         {
             velocityX -= deacclerationX * Time.fixedDeltaTime;
         }
