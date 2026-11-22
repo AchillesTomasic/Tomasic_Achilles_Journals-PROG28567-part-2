@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1054579206}
   - component: {fileID: 1054579209}
   - component: {fileID: 1054579210}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4295,6 +4295,14 @@ PrefabInstance:
     - target: {fileID: 7428298229329625348, guid: c0063abd85bf41b4faef95c439286949, type: 3}
       propertyPath: velocityX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428298229329625348, guid: c0063abd85bf41b4faef95c439286949, type: 3}
+      propertyPath: BoxcastDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428298229329625348, guid: c0063abd85bf41b4faef95c439286949, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7428298229329625348, guid: c0063abd85bf41b4faef95c439286949, type: 3}
       propertyPath: timeToReachMaxSpeedX
