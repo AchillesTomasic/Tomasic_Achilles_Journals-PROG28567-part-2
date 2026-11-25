@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public float BoxcastDistance; // distance the boxcast travels
     public LayerMask groundMask; // used to only check the ground layers
 
+    // jumping mechanics //
+    public float apexHeight; // apex height for the players jump
+    public float apexTime; // time that the character will remain in the apex of their jump
+    public float terminalFallSpeed; // max falling speed for the character
     public enum FacingDirection
     {
         left, right
@@ -53,7 +58,13 @@ public class PlayerController : MonoBehaviour
         {
             playerInput.x = 1; // sers the player input value equal to 1
         }
+        // input to detect if the player presses the w or space key
+        if(Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            
+        }
         MovementUpdate(playerInput);
+        jumpTrigger();
     }
 
     private void MovementUpdate(Vector2 playerInput)
@@ -83,7 +94,11 @@ public class PlayerController : MonoBehaviour
 
         rb2D.linearVelocityX = lastDirection * velocityX; // changes the x linear velocity for he rigidbody on the player
     }
-
+    private void jumpTrigger()
+    {
+        float gravity = -2 * apexHeight /  Mathf.Pow(apexTime,2);
+        float jumpVelocity = 2 * apexHeight / apexTime;
+    }
     public bool IsWalking()
     {
         // is the velocity of the player above 
