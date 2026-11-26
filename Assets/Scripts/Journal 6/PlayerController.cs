@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             velocity.y += gravity * Time.fixedDeltaTime;
             velocity.y = Mathf.Clamp(velocity.y, -terminalVelocity, velocity.y);
         }
-        else
+        else //c
         {
             velocity.y = 0f;
         }
